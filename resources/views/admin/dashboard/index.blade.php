@@ -1,23 +1,135 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Admin Dashboard') }}
-        </h2>
-    </x-slot>
+<form method="POST" action="{{ route('admin.logout') }}">
+    @csrf
+    <a class="dropdown-item" href="{{ route('admin.logout') }}"
+        onclick="event.preventDefault(); this.closest('form').submit();"><i class="fas fa-sign-out-alt"></i>
+        Logout</a>
+</form>
 
-    <div class="py-12">
+@extends('admin.layouts.master')
 
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <!-- Authentication -->
-            <form method="POST" action="{{ route('admin.logout') }}">
-                    @csrf
-                    <a class="dropdown-item" href="{{ route('admin.logout') }}" onclick="event.preventDefault(); this.closest('form').submit();"><i class="fas fa-sign-out-alt"></i> Logout</a>
-                    </form>
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
+@section('content')
+        <div class="navbar-bg"></div>
+        <nav class="navbar navbar-expand-lg main-navbar">
+            <form class="form-inline mr-auto">
+                <ul class="navbar-nav mr-3">
+                    <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
+                </ul>
+            </form>
+            <ul class="navbar-nav navbar-right justify-content-end rightsidetop">
+                <li class="nav-link">
+                    <a href="" target="_blank" class="btn btn-warning">Front End</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img alt="image" src="uploads/user.jpg" class="rounded-circle-custom">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="profile.html"><i class="far fa-user"></i> Edit Profile</a></li>
+                        <li><a class="dropdown-item" href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+
+
+        <div class="main-sidebar">
+            <aside id="sidebar-wrapper">
+                <div class="sidebar-brand">
+                    <a href="index.html">Admin Panel</a>
                 </div>
-            </div>
+                <div class="sidebar-brand sidebar-brand-sm">
+                    <a href="index.html"></a>
+                </div>
+
+                <ul class="sidebar-menu">
+
+                    <li class=""><a class="nav-link" href="index.html"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
+
+                    <li class="nav-item dropdown active">
+                        <a href="#" class="nav-link has-dropdown"><i class="fas fa-vector-square"></i><span>Dropdown Items</span></a>
+                        <ul class="dropdown-menu">
+                            <li class="active"><a class="nav-link" href=""><i class="fas fa-angle-right"></i> Item 1</a></li>
+                            <li class=""><a class="nav-link" href=""><i class="fas fa-angle-right"></i> Item 2</a></li>
+                        </ul>
+                    </li>
+
+                    <li class=""><a class="nav-link" href="setting-logo.html"><i class="fas fa-cog"></i> <span>Setting</span></a></li>
+
+                    <li class=""><a class="nav-link" href="form.html"><i class="fab fa-wpforms"></i> <span>Form</span></a></li>
+
+                    <li class=""><a class="nav-link" href="table.html"><i class="fas fa-border-all"></i> <span>Table</span></a></li>
+
+                    <li class=""><a class="nav-link" href="invoice.html"><i class="fas fa-receipt"></i> <span>Invoice</span></a></li>
+
+                </ul>
+            </aside>
         </div>
-    </div>
-</x-app-layout>
+
+        <div class="main-content">
+            <section class="section">
+                <div class="section-header">
+                    <h1>Dashboard</h1>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                        <div class="card card-statistic-1">
+                            <div class="card-icon bg-primary">
+                                <i class="far fa-user"></i>
+                            </div>
+                            <div class="card-wrap">
+                                <div class="card-header">
+                                    <h4>Total News Categories</h4>
+                                </div>
+                                <div class="card-body">
+                                    12
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                        <div class="card card-statistic-1">
+                            <div class="card-icon bg-danger">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <div class="card-wrap">
+                                <div class="card-header">
+                                    <h4>Total News</h4>
+                                </div>
+                                <div class="card-body">
+                                    122
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                        <div class="card card-statistic-1">
+                            <div class="card-icon bg-warning">
+                                <i class="fas fa-bullhorn"></i>
+                            </div>
+                            <div class="card-wrap">
+                                <div class="card-header">
+                                    <h4>Total Users</h4>
+                                </div>
+                                <div class="card-body">
+                                    45
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-header">
+                    <h1>Monthly Sales</h1>
+                </div>
+
+                <div class="row pb_50">
+                    <div class="col-lg-12">
+                        <div class="card p_20">
+                            <canvas id="myChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+@endsection
