@@ -5,6 +5,7 @@
 
 
     @include('admin.layouts.sidebar')
+    @include('admin.layouts.custom_error')
 
 
     <div class="main-content">
@@ -17,9 +18,6 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                @if (session('success'))
-                                   <div class="alert alert-success">{{ session('success') }}</div>
-                                @endif
                                 <form action="{{ route('admin.profile.update') }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">

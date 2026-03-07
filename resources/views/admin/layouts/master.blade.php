@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
@@ -16,13 +17,15 @@
 </head>
 
 <body>
-<div id="app">
-    <div class="main-wrapper">
-        @yield('content')
+    <div id="app">
+        <div class="main-wrapper">
+            @yield('content')
+        </div>
     </div>
-</div>
 
- @include('admin.layouts.scripts_bottom')
+    @include('admin.layouts.scripts_bottom')
+    @include('admin.layouts.custom_error')
 
 </body>
+
 </html>
