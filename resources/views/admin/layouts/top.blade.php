@@ -14,14 +14,13 @@
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     @if(Auth::guard()->user()->avatar != '')
-                    <img alt="image" src="{{ asset('uploads/'.Auth::huard()->user()->avatar) }}" class="rounded-circle-custom">
+                    <img alt="image" src="{{ asset('uploads/'.Auth::guard()->user()->avatar) }}" class="rounded-circle-custom">
                     @else
                     <img alt="image" src="{{ asset('uploads/user.jpg') }}" class="rounded-circle-custom">
                     @endif
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="profile.html"><i class="far fa-user"></i> Edit Profile</a></li>
-                    <li><a class="dropdown-item" href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    <li><a class="dropdown-item" href="{{ route('admin.profile') }}"><i class="far fa-user"></i> Profil módosítása</a></li>
                 </ul>
             </li>
         </ul>
